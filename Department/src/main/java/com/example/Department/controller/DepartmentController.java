@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Department.DTO.DepartmentDTO;
 import com.example.Department.model.DepartmentEntity;
 import com.example.Department.repo.DepartmentRepository;
 
@@ -25,19 +27,28 @@ public class DepartmentController {
 private static final Logger LOGGER=LoggerFactory.getLogger(DepartmentController.class);
 	
 	@PostMapping("/add")
-	public void save(@RequestBody DepartmentEntity departmentEntity ) {	
+	public void save(@RequestBody DepartmentDTO departmentEntity ) {	
 		departmentRepo.saveDepartmentData(departmentEntity);		
 	}
 	
 	
 	
 	@GetMapping("/getalldepartments")
-	public List<DepartmentEntity> getDepartment(){
+	public List<DepartmentDTO> getDepartment(){
 			
 	return departmentRepo.findAll();
 		
 	}
 	
 	
+	
+	
+	
+	@GetMapping("/getdepartment")
+	public String getAllDepartment(){
+			
+		return "Hello All department";
+	}
+
 	
 }
