@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.Department.DTO.DepartmentDTO;
 import com.example.Department.model.DepartmentEntity;
 
 @Repository
@@ -16,10 +17,10 @@ public class DepartmentRepository{
 	RestTemplate restTemplate;
 	
 	
-	public List<DepartmentEntity> listDepartment=new ArrayList<DepartmentEntity>();
+	public List<DepartmentDTO> listDepartment=new ArrayList<DepartmentDTO>();
 		
 
-	public DepartmentEntity saveDepartmentData(DepartmentEntity department) {
+	public DepartmentDTO saveDepartmentData(DepartmentDTO department) {
 			
 		listDepartment.add(department);
 		return department;
@@ -27,7 +28,7 @@ public class DepartmentRepository{
 	
 	
 	
-	public List<DepartmentEntity> findAll() {
+	public List<DepartmentDTO> findAll() {
 		
 		
 		ArrayList<String> arrayList=restTemplate.getForObject("http://localhost:8082/employee/getemployee",ArrayList.class);
